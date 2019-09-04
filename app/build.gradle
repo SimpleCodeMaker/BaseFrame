@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.mysample"
+        applicationId "com.casual.mysample"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation project(':baselibrary')
+    implementation project(':baseframe')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

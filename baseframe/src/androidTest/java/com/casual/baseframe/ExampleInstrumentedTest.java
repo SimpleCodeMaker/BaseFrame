@@ -1,4 +1,4 @@
-package com.casual.mylibrary;
+package com.casual.baseframe;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.mylibrary.test", appContext.getPackageName());
+        assertEquals("com.example.baselibrary.test", appContext.getPackageName());
     }
 }

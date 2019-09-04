@@ -1,4 +1,4 @@
-package com.casual.mylibrary;
+package com.casual.baseframe;
 
 import org.junit.Test;
 
