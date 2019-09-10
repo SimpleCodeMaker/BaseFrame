@@ -12,12 +12,13 @@ class MainActivity : BLActivity<MainViewModel>() {
     override val layoutId: Int = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
-//        viewModel.list?.observe(this, Observer {
-//            commit.text = it.get(0).name
-//        })
-//        commit.setOnClickListener {
-//            viewModel.geta()
-//        }
+        viewModel.list?.observe(this, Observer {
+            content.text = it.get(0).name
+        })
+        commit.setOnClickListener {
+            viewModel.geta()
+        }
+        //点击跳下页
         content.setOnClickListener {
             startActivity(Intent(this,SecondActivity::class.java))
 //            finish()
