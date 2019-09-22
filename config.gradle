@@ -1,0 +1,35 @@
+ext {
+    // false 单独运行模式
+    // true 组建依赖模式
+    // isComponent = true
+    androidConfig = [
+            compileSdkVersion: 29,
+            minSdkVersion    : 21,
+            targetSdkVersion : 26,
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+    moduleConfig = [
+            // 这里放置，每个模块的包名,以及是否开启模块模式
+            app                  : [
+                    appId: "com.casual.mysample",
+            ],
+            module_main          : [
+                    isComponent: true,
+                    appId      : "com.casual.module_main",
+            ],
+            module_map          : [
+                    isComponent: false,
+                    appId      : "com.casual.module_map",
+            ]
+    ]
+    KeyStore = [
+            BUGLY_APP_ID: "\"d54331e97e\"",
+            JPUSH_APPKEY: "b4421a4a7e328e4a4b58371e"
+    ]
+    arouter_compiler_version = '1.2.2'
+    arouter_api_version = '1.5.0'
+//    glide_version = '4.8.0'
+//    room_version = '1.1.1'
+//    appcompat_version = '27.1.1'
+}

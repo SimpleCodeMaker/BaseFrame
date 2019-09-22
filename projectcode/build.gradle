@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.core:core-ktx:1.0.2'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test:runner:1.1.1'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //Arouter
+    api "com.alibaba:arouter-api:$arouter_api_version"
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
+    api project(path: ':baseframe')
+}

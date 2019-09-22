@@ -1,0 +1,56 @@
+def isComponent = moduleConfig.module_main.isComponent
+def appId = moduleConfig.module_main.appId
+if(isComponent){
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.application'
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+    defaultConfig {
+        if(!isComponent){
+            applicationId "$appId"
+        }
+
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        sourceSets {
+            main {
+                //如果是组建，意思是单独运行模式则配置 AndroidManifest
+                if (!isComponent) {
+                    manifest.srcFile 'src/main/java/AndroidManifest.xml'
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+    implementation project(path: ':projectcode')
+}

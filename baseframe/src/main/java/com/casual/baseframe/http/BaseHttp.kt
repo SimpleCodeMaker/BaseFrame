@@ -30,7 +30,6 @@ object BaseHttp {
             baseUrl(BASE_URL)
             addCallAdapterFactory(CoroutineCallAdapterFactory())
             addConverterFactory(GsonConverterFactory.create())
-
         }
     }
 
