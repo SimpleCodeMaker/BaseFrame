@@ -11,16 +11,22 @@ public object RouteUris {
      *
      * 不同模块使用相同的Group，数据会被覆盖，导致界面跳转不成功的情况
      */
+    private const val MODULE_MAIN = "module_main"
+    private const val MODULE_MAP = "module_map"
+    private const val MODULE_HUANXIN = "module_huanxin"
     public object Activitys {
-        private const val MODULE_MAIN = "module_main"
+        
         const val MODULE_MAIN_MAIN = "/$MODULE_MAIN/main"
-
-        private const val MODULE_MAP = "module_map"
+        
         const val MODULE_MAP_MAIN = "/$MODULE_MAP/main"
+
+        const val MODULE_HUANXIN_MAIN = "/$MODULE_HUANXIN/main"
     }
 
 
     public object Fragments {
+        
+        
     }
 
     public  object Services {

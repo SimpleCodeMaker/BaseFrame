@@ -19,8 +19,12 @@ ext {
                     appId      : "com.casual.module_main",
             ],
             module_map          : [
-                    isComponent: false,
+                    isComponent: true,
                     appId      : "com.casual.module_map",
+            ],
+            module_huanxin          : [
+                    isComponent: true,
+                    appId      : "com.casual.module_huanxin",
             ]
     ]
     KeyStore = [

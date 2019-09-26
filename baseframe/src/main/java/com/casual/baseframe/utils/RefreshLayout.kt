@@ -14,14 +14,13 @@ import kotlinx.coroutines.cancel
 class RefreshLayout : SmartRefreshLayout {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-    var coroutine:CoroutineScope?=null
+//    var coroutine:CoroutineScope?=CoroutineScope(Dispatchers.Main+ Job())
     var pageSize: Int = 10
     var pageIndex: Int = 1
     var isRefreshState = true
     var previousIndex:Int = 1
     fun refreshLoadMore(init:RefreshLoadMore.()->Unit){
         init()
-        coroutine = CoroutineScope(Dispatchers.Main+ Job())
         setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
                 Log.d("setOnLoadMoreListener", "加载加载加载加载加载加载加载加载")
@@ -43,7 +42,8 @@ class RefreshLayout : SmartRefreshLayout {
     }
 
     override fun onDetachedFromWindow() {
-        coroutine?.cancel()
+//        coroutine?.cancel()
+//        coroutine = null
         super.onDetachedFromWindow()
     }
 }

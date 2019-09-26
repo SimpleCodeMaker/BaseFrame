@@ -2,6 +2,7 @@ package com.example.projectcode.net
 
 import com.example.projectcode.bean.PublicNumberBean
 import com.example.projectcode.bean.PublicNumberDetail
+import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,6 +25,10 @@ interface Api {
      */
     @GET("/wxarticle/list/{ID}/{pageindex}/json")
     suspend fun getPublicNumberDetailList(@Path("ID") ID: Int, @Path("pageindex") pageindex: Int): ProjectData<PublicNumberDetail>
+
+    @GET("/wxarticle/chapters/json")
+    fun getPublicNumberList3(): Observable<ProjectData<List<PublicNumberBean>>>
+
 }
 
 

@@ -7,7 +7,7 @@ class WelcomeVM : ProjectViewModel() {
 //    fun geta() {
 //
 ////        presenterScope.request<BaseModel<List<PublicNumberBean>>> {
-////            api = service.getPublicNumberList()
+////            api = serviceByCoroutine.getPublicNumberList()
 ////            onSuccess {
 ////                list?.postValue(it!!.data)
 ////                Log.d("线程", Thread.currentThread().name)
@@ -18,7 +18,7 @@ class WelcomeVM : ProjectViewModel() {
 ////            }
 ////        }
 //        presenterScope.request<ProjectData<List<PublicNumberBean>>> {
-//            api = { service.getPublicNumberList2() }
+//            api = { serviceByCoroutine.getPublicNumberList2() }
 //            onSuccess={
 //                list?.postValue(it!!.data)
 //                Log.d("线程", Thread.currentThread().name)

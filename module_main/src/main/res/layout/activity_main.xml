@@ -26,4 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="地图" />
+    <Button
+            android:id="@+id/huanxin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="环信" />
 </LinearLayout>

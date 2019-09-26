@@ -23,9 +23,9 @@ class SecondActivity : BFActivity<SecondViewModel>() {
             }
         })
         viewModel.adapter.apply {bindToRecyclerView(recycle)}
-//        commit.setOnClickListener {
-//            viewModel.geta(2)
-//        }
+        commit.setOnClickListener {
+            viewModel.geta(2)
+        }
         refresh.refreshLoadMore {
             loadMore={
                 viewModel.geta(it)

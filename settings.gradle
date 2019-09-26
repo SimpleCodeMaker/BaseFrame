@@ -1,1 +1,1 @@
-include ':app', ':baseframe', ':projectcode', ':module_main', ':module_map'
+include ':app', ':baseframe', ':projectcode', ':module_main', ':module_map', ':module_huanxin'

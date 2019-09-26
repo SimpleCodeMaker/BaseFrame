@@ -23,16 +23,16 @@ android {
         versionName androidConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        sourceSets {
-            main {
-                //如果是组建，意思是单独运行模式则配置 AndroidManifest
-                if (!isComponent) {
-                    manifest.srcFile 'src/main/java/AndroidManifest.xml'
-                } else {
-                    manifest.srcFile 'src/main/AndroidManifest.xml'
-                }
-            }
-        }
+//        sourceSets {
+//            main {
+//                //如果是组建，意思是单独运行模式则配置 AndroidManifest
+//                if (!isComponent) {
+//                    manifest.srcFile 'src/main/java/AndroidManifest.xml'
+//                } else {
+//                    manifest.srcFile 'src/main/AndroidManifest.xml'
+//                }
+//            }
+//        }
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())

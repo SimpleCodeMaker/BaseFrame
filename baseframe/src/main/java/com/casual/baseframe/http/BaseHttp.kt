@@ -4,6 +4,7 @@ import com.casual.baseframe.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -24,7 +25,7 @@ object BaseHttp {
         }
     }
 
-    val retrofit by lazy {
+    val retrofitByCoroutine by lazy {
         Retrofit.Builder().apply {
             client(okhttpBuilder.build())
             baseUrl(BASE_URL)
@@ -33,7 +34,19 @@ object BaseHttp {
         }
     }
 
-    inline fun <reified T> getService(): T {
-        return retrofit.build().create(T::class.java)
+    inline fun <reified T> getServiceByCoroutine(): T {
+        return retrofitByCoroutine.build().create(T::class.java)
+    }
+    
+    val retrofitByRxjava by lazy{
+        Retrofit.Builder().apply {
+            client(okhttpBuilder.build())
+            baseUrl(BASE_URL)
+            addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            addConverterFactory(GsonConverterFactory.create())
+        }
+    }
+    inline fun <reified T> getServiceByRxjava(): T {
+        return retrofitByRxjava.build().create(T::class.java)
     }
 }

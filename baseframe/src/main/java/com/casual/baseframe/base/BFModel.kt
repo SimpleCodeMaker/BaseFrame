@@ -1,6 +1,7 @@
 package com.casual.baseframe.base
 
 import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.*
 
 /**
@@ -15,6 +16,13 @@ abstract class BFModel : ViewModel() {
     //页面销毁的时候父协程取消  子协程也会跟着取消
     override fun onCleared() {
         presenterScope.cancel()
+        if(compositeDisposable.isDisposed==false){
+            compositeDisposable.clear()
+        }
         super.onCleared()
     }
+    
+    protected var compositeDisposable:CompositeDisposable = CompositeDisposable()
+    
+    
 }

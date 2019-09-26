@@ -21,6 +21,11 @@ class MainActivity : BFActivity<MainViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
         map.setOnClickListener {
             RouteUris.Activitys.MODULE_MAP_MAIN.doRoute(this)
+//            startActivity(Intent(this, SecondActivity::class.java))
+
+        }
+        huanxin.setOnClickListener { 
+            
         }
 //        viewModel.list?.observe(this, Observer {
 //            content.text = it.get(0).name
