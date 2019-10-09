@@ -15,7 +15,6 @@ android {
         versionName androidConfig.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         kapt {
-            generateStubs = true
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
             }

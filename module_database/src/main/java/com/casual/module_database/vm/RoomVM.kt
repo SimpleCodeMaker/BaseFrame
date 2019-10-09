@@ -8,6 +8,9 @@ import com.casual.module_database.room.RoomDataDao
 
 class RoomVM : BFModel() {
     var index = 0L
+    val allDataByLiveData by lazy{
+        roomDataDao.getAllByLiveData()
+    }
     val roomDataDao by lazy {
         AppDatabase.getInstance(context = Utils.getContext()).roomDataDao()
     }

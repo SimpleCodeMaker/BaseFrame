@@ -2,6 +2,7 @@ package com.casual.module_database
 
 import android.Manifest
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.casual.baseframe.base.BFActivity
@@ -35,6 +36,9 @@ class RoomActivity : BFActivity<RoomVM>() {
             viewModel.deleteData()
         }
         adapter.bindToRecyclerView(room_recycle)
+        viewModel.allDataByLiveData.observe(this, Observer {
+            adapter.setNewData(it)
+        })
 
     }
 
