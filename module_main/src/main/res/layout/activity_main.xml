@@ -31,4 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="环信" />
+    <Button
+            android:id="@+id/database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="room数据库" />
 </LinearLayout>

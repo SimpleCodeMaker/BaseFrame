@@ -75,5 +75,10 @@ dependencies {
     api "com.github.ittianyu:BottomNavigationViewEx:2.0.4"
     //权限申请 搜RxPermissions
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
+//其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
+    api 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    api 'com.tencent.bugly:nativecrashreport:latest.release'
+
 }
 

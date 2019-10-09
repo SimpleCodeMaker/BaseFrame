@@ -27,6 +27,9 @@ class MainActivity : BFActivity<MainViewModel>() {
         huanxin.setOnClickListener { 
             
         }
+        database.setOnClickListener {
+            RouteUris.Activitys.MODULE_DATABASE_MAIN.doRoute(this)
+        }
 //        viewModel.list?.observe(this, Observer {
 //            content.text = it.get(0).name
 //        })

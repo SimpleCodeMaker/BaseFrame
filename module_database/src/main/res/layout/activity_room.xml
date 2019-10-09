@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/room_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/adddata"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:id="@+id/adddata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加数据"
+            app:layout_constraintBottom_toTopOf="@id/getdata" />
+    <Button
+            android:id="@+id/getdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="获取数据"
+            app:layout_constraintBottom_toTopOf="@id/deletedata" />
+    <Button
+            android:id="@+id/deletedata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清空数据"
+            app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,13 @@ import com.casual.baseframe.BuildConfig
 import com.casual.baseframe.utils.Utils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.squareup.leakcanary.LeakCanary
+import com.tencent.bugly.crashreport.CrashReport
 
 abstract class BFApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         Utils.init(this)
+        CrashReport.initCrashReport(this, "b2cce9e661", BuildConfig.DEBUG);
         SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
             layout.apply {
                 autoLoadMore()

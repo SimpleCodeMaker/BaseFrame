@@ -14,6 +14,7 @@ public object RouteUris {
     private const val MODULE_MAIN = "module_main"
     private const val MODULE_MAP = "module_map"
     private const val MODULE_HUANXIN = "module_huanxin"
+    private const val MODULE_DATABASE = "module_database"
     public object Activitys {
         
         const val MODULE_MAIN_MAIN = "/$MODULE_MAIN/main"
@@ -21,6 +22,8 @@ public object RouteUris {
         const val MODULE_MAP_MAIN = "/$MODULE_MAP/main"
 
         const val MODULE_HUANXIN_MAIN = "/$MODULE_HUANXIN/main"
+        
+        const val MODULE_DATABASE_MAIN = "/$MODULE_DATABASE/main"
     }
 
 

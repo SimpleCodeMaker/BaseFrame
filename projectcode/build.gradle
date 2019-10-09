@@ -17,6 +17,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
 
         kapt {
+            generateStubs = true
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
             }
@@ -34,6 +35,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(path: ':baseframe')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.core:core-ktx:1.0.2'
@@ -44,6 +46,12 @@ dependencies {
     //Arouter
     api "com.alibaba:arouter-api:$arouter_api_version"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-
-    api project(path: ':baseframe')
+    
+    //Room数据库
+    api 'androidx.room:room-runtime:2.0.0'
+    // For Kotlin use kapt instead of annotationProcessor
+    kapt 'androidx.room:room-compiler:2.0.0'
+    // optional - RxJava support for Room
+    api 'androidx.room:room-rxjava2:2.0.0'
+    
 }

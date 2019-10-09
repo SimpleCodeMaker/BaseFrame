@@ -1,19 +1,28 @@
-apply plugin: 'com.android.application'
+def isComponent = moduleConfig.module_database.isComponent
+def appId = moduleConfig.module_database.appId
+if (isComponent) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
-
-def appId =moduleConfig.app.appId
 android {
     compileSdkVersion androidConfig.compileSdkVersion
     defaultConfig {
-        applicationId "$appId"
+        if (!isComponent) {
+            applicationId "$appId"
+        }
+
         minSdkVersion androidConfig.minSdkVersion
         targetSdkVersion androidConfig.targetSdkVersion
         versionCode androidConfig.versionCode
         versionName androidConfig.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         kapt {
             generateStubs = true
             arguments {
@@ -21,25 +30,22 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(path: ':projectcode')
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-// 这里循环对配置文件中的模块进行引入
-    moduleConfig.each { entry ->
-        def cfg = entry.value
-        def module_name = entry.key
-        if (true == cfg.isComponent) {
-            implementation project(":$module_name")
-        }
-    }
+    implementation project(path: ':projectcode')
+    // For Kotlin use kapt instead of annotationProcessor
+    //这是个深坑，所有需要注解的  都必须使用到的地方  加kapt  不能只在最上层加
+    //api 就可以不用每个都加  最上层加就行
+    kapt 'androidx.room:room-compiler:2.0.0'
 }

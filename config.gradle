@@ -25,6 +25,10 @@ ext {
             module_huanxin          : [
                     isComponent: false,
                     appId      : "com.casual.module_huanxin",
+            ],
+            module_database          : [
+                    isComponent: true,
+                    appId      : "com.casual.module_database",
             ]
     ]
     KeyStore = [
