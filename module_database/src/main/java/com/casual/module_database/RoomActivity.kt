@@ -30,7 +30,7 @@ class RoomActivity : BFActivity<RoomVM>() {
             }
         }
         getdata.setOnClickListener {
-            viewModel.getData()
+            
         }
         deletedata.setOnClickListener {
             viewModel.deleteData()
@@ -39,7 +39,10 @@ class RoomActivity : BFActivity<RoomVM>() {
         viewModel.allDataByLiveData.observe(this, Observer {
             adapter.setNewData(it)
         })
-
+        viewModel.getData().observe(this, Observer { 
+            it
+            "asd"
+        })
     }
 
     override val viewModel: RoomVM by lazy {

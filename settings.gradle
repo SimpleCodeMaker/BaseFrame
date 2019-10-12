@@ -1,1 +1,1 @@
-include ':app', ':baseframe', ':projectcode', ':module_main', ':module_map', ':module_huanxin',':easeui', ':module_database'
+include ':app', ':baseframe', ':projectcode', ':module_main', ':module_map', ':module_huanxin', ':easeui', ':module_database', ':module_jpush', ':JPushExample'

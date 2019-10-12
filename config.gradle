@@ -30,10 +30,14 @@ ext {
                     isComponent: true,
                     appId      : "com.casual.module_database",
             ]
+//            module_jpush          : [
+//                    isComponent: true,
+//                    appId      : "com.casual.module_jpush",
+//            ]
     ]
     KeyStore = [
             BUGLY_APP_ID: "\"d54331e97e\"",
-            JPUSH_APPKEY: "b4421a4a7e328e4a4b58371e"
+            JPUSH_APPKEY: "5da16e8b570df361c2000d8c"
     ]
     arouter_compiler_version = '1.2.2'
     arouter_api_version = '1.5.0'

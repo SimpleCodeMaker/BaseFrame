@@ -1,5 +1,6 @@
 package com.casual.module_database.vm
 
+import androidx.lifecycle.LiveData
 import com.casual.baseframe.base.BFModel
 import com.casual.baseframe.utils.Utils
 import com.casual.module_database.room.AppDatabase
@@ -22,9 +23,8 @@ class RoomVM : BFModel() {
         })
         index++
     }
-    fun getData(){
-      val b=  roomDataDao.getAll()
-        "aa"
+    fun getData():LiveData<RoomData?>{
+      return roomDataDao.getOneByLiveData()
     }
     fun deleteData(){
         roomDataDao.deleteALL()

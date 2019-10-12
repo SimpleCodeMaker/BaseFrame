@@ -5,6 +5,8 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface RoomDataDao {
@@ -23,5 +25,6 @@ interface RoomDataDao {
     @Query("DELETE FROM RoomData")
     fun deleteALL()
 
-
+    @Query("SELECT * FROM RoomData WHERE dataId = 5 LIMIT 0,1")
+    fun getOneByLiveData(): LiveData<RoomData?>
 }

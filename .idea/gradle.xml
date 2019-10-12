@@ -8,11 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JPushExample" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baseframe" />
             <option value="$PROJECT_DIR$/easeui" />
             <option value="$PROJECT_DIR$/module_database" />
             <option value="$PROJECT_DIR$/module_huanxin" />
+            <option value="$PROJECT_DIR$/module_jpush" />
             <option value="$PROJECT_DIR$/module_main" />
             <option value="$PROJECT_DIR$/module_map" />
             <option value="$PROJECT_DIR$/projectcode" />
