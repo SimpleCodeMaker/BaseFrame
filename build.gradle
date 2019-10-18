@@ -3,6 +3,7 @@ apply from: "config.gradle"
 //apply plugin: 'com.alibaba.arouter'
 
 buildscript {
+    ext.kotlin_version = '1.3.50'
     ext.kotlin_version = '1.3.41'
     repositories {
         google()
@@ -15,6 +16,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        //aspectjtools插件
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'
     }
 }
 

@@ -36,4 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="room数据库" />
+    <Button
+            android:id="@+id/aop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="aop测试" />
 </LinearLayout>

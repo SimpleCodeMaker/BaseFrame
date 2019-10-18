@@ -18,7 +18,7 @@ class WelcomeActivity : BFActivity<WelcomeVM>() {
         GlobalScope.launch {
             delay(1500)
             RouteUris.Activitys.MODULE_MAIN_MAIN.doRoute(this@WelcomeActivity)
-//            finish()
+            finish()
         }
     }
 

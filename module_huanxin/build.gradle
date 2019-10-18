@@ -43,21 +43,18 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     //自3.6.0开始需要java8的支持
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+   
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
     implementation project(path: ':projectcode')
-    implementation project(path: ':easeui')
+    
 
     api 'androidx.appcompat:appcompat:1.0.0'
     // Google firebase cloud messaging
     implementation 'com.google.android.gms:play-services-base:11.4.0'
     implementation 'com.google.firebase:firebase-messaging:11.4.0'
-    api 'com.hyphenate:hyphenate-sdk:3.6.1'
+//    api 'com.hyphenate:hyphenate-sdk:3.6.1'
 }

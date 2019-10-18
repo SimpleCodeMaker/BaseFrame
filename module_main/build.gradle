@@ -8,8 +8,8 @@ if(isComponent){
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'android-aspectjx'
 apply plugin: 'kotlin-kapt'
-
 android {
     compileSdkVersion androidConfig.compileSdkVersion
     defaultConfig {
@@ -53,4 +53,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
     implementation project(path: ':projectcode')
+    //引入aspectj的依赖
+    implementation 'org.aspectj:aspectjrt:1.8.9'
 }
