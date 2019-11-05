@@ -18,5 +18,4 @@ abstract class BFActivity<T : ViewModel> : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
-
 }

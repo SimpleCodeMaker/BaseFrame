@@ -7,6 +7,7 @@ import com.casual.mysample.R
 import com.casual.mysample.vm.WelcomeVM
 import com.example.projectcode.RouteUris
 import com.example.projectcode.doRoute
+import kotlinx.android.synthetic.main.activity_welcome.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,9 +21,13 @@ class WelcomeActivity : BFActivity<WelcomeVM>() {
             RouteUris.Activitys.MODULE_MAIN_MAIN.doRoute(this@WelcomeActivity)
             finish()
         }
+        image.setOnClickListener {
+
+        }
     }
 
     override val viewModel: WelcomeVM by lazy {
         ViewModelProviders.of(this).get(WelcomeVM::class.java)
     }
+
 }

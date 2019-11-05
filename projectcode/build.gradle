@@ -43,7 +43,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':baseframe')
-    api project(path: ':module_jpush')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.core:core-ktx:1.0.2'
@@ -61,8 +60,6 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.0.0'
     // optional - RxJava support for Room
     api 'androidx.room:room-rxjava2:2.0.0'
-
-    api project(path: ':easeui')
 //    api 'cn.jiguang.sdk:jpush:3.3.6'  // 此处以JPush 3.3.6 版本为例。
 //    api 'cn.jiguang.sdk:jcore:2.1.6'  // 此处以JCore 2.1.6 版本为例。
 }

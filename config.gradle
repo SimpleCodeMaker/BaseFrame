@@ -18,22 +18,10 @@ ext {
                     isComponent: true,
                     appId      : "com.casual.module_main",
             ],
-            module_map          : [
-                    isComponent: false,
-                    appId      : "com.casual.module_map",
-            ],
-            module_huanxin          : [
-                    isComponent: true,
-                    appId      : "com.casual.module_huanxin",
-            ],
             module_database          : [
                     isComponent: true,
                     appId      : "com.casual.module_database",
             ]
-//            module_jpush          : [
-//                    isComponent: true,
-//                    appId      : "com.casual.module_jpush",
-//            ]
     ]
     KeyStore = [
             BUGLY_APP_ID: "\"d54331e97e\"",
