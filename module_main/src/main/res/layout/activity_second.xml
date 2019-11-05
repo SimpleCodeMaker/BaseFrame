@@ -4,15 +4,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
+        tools:context=".activity.SimpleRequestActivity">
 
-    <com.casual.baseframe.utils.RefreshLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/commit"
             app:layout_constraintTop_toTopOf="parent"
-            app:srlEnableRefresh="true">
+            >
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle"
@@ -22,7 +22,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@id/commit"
                 app:layout_constraintTop_toTopOf="parent" />
-    </com.casual.baseframe.utils.RefreshLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
     <Button

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/request"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:id="@+id/request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="点击请求"
+            app:layout_constraintBottom_toTopOf="@id/refresh" />
+
+    <Button
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="下拉刷新上拉加载请求"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    <!--    <Button-->
+    <!--            android:id="@+id/map"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="地图" />-->
+    <!--    <Button-->
+    <!--            android:id="@+id/huanxin"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="环信" />-->
+    <!--    <Button-->
+    <!--            android:id="@+id/database"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="room数据库" />-->
+    <!--    <Button-->
+    <!--            android:id="@+id/aop"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="aop测试" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

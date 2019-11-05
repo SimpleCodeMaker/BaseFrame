@@ -29,6 +29,13 @@ interface Api {
     @GET("/wxarticle/chapters/json")
     fun getPublicNumberList3(): Observable<ProjectData<List<PublicNumberBean>>>
 
+    /**
+     * 查看某个公众号历史数据
+     */
+    @GET("/wxarticle/list/{ID}/{pageindex}/json")
+    fun getPublicNumberDetailListByRxjava(@Path("ID") ID: Int, @Path("pageindex") pageindex: Int): Observable<ProjectData<PublicNumberDetail>>
+
+
 }
 
 

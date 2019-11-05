@@ -12,77 +12,77 @@ import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
 import java.net.ConnectException
 
-class RequestCallBackByRxjava<T : ProjectData<*>> {
-    constructor(compositeDisposable: CompositeDisposable) {
-        this.compositeDisposable = WeakReference(compositeDisposable)
-    }
-
-    //所有引用外部对象的 都要用弱连接免得内存溢出
-    private var compositeDisposable: WeakReference<CompositeDisposable>?
-    var onSuccess: ((T?) -> Unit)? = null
-    var onComplete: (() -> Unit)? = null
-    var onFailed: ((error: String?, code: Int) -> Unit)? = null
-    var refreshLayout: RefreshLayout? = null
-
-    fun clean() {
-        onSuccess = null
-        onComplete = null
-        onFailed = null
-        refreshLayout = null
-    }
-
-    fun stopRequest() {
-        clean()
-        //取消所有请求
-        compositeDisposable?.get()?.clear()
-        //清除弱连接
-        compositeDisposable?.clear()
-        compositeDisposable = null
-    }
-
-    fun addDisposable(disposable: Disposable) {
-        compositeDisposable?.get()?.add(disposable)
-    }
-
-    fun removeDisposable(disposable: Disposable) {
-        compositeDisposable?.get()?.remove(disposable)
-    }
-}
-
-
-fun <T : ProjectData<*>> Observable<T>.request(
-    compositeDisposable: CompositeDisposable,
-    init: RequestCallBackByRxjava<T>.() -> Unit
-) {
-    val callback = RequestCallBackByRxjava<T>(compositeDisposable = compositeDisposable)
-    callback.init()
-    var disposable: Disposable? = null
-    subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(object : Observer<T> {
-            override fun onComplete() {
-                callback.clean()
-                disposable?.let {
-                    callback.removeDisposable(it)
-                }
-
-            }
-
-            override fun onSubscribe(d: Disposable) {
-                disposable = d
-                callback.addDisposable(d)
-            }
-
-            override fun onNext(t: T) {
-                callback.onSuccess?.invoke(t)
-            }
-
-            override fun onError(e: Throwable) {
-                callback.stopRequest()
-                ToastUtils.showShort(e.message.toString())
-            }
-        }
-        )
-}
+//class RequestCallBackByRxjava<T : ProjectData<*>> {
+//    constructor(compositeDisposable: CompositeDisposable) {
+//        this.compositeDisposable = WeakReference(compositeDisposable)
+//    }
+//
+//    //所有引用外部对象的 都要用弱连接免得内存溢出
+//    private var compositeDisposable: WeakReference<CompositeDisposable>?
+//    var onSuccess: ((T?) -> Unit)? = null
+//    var onComplete: (() -> Unit)? = null
+//    var onFailed: ((error: String?, code: Int) -> Unit)? = null
+//    var refreshLayout: RefreshLayout? = null
+//
+//    fun clean() {
+//        onSuccess = null
+//        onComplete = null
+//        onFailed = null
+//        refreshLayout = null
+//    }
+//
+//    fun stopRequest() {
+//        clean()
+//        //取消所有请求
+//        compositeDisposable?.get()?.clear()
+//        //清除弱连接
+//        compositeDisposable?.clear()
+//        compositeDisposable = null
+//    }
+//
+//    fun addDisposable(disposable: Disposable) {
+//        compositeDisposable?.get()?.add(disposable)
+//    }
+//
+//    fun removeDisposable(disposable: Disposable) {
+//        compositeDisposable?.get()?.remove(disposable)
+//    }
+//}
+//
+//
+//fun <T : ProjectData<*>> Observable<T>.request(
+//    compositeDisposable: CompositeDisposable,
+//    init: RequestCallBackByRxjava<T>.() -> Unit
+//) {
+//    val callback = RequestCallBackByRxjava<T>(compositeDisposable = compositeDisposable)
+//    callback.init()
+//    var disposable: Disposable? = null
+//    subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//        .subscribe(object : Observer<T> {
+//            override fun onComplete() {
+//                callback.clean()
+//                disposable?.let {
+//                    callback.removeDisposable(it)
+//                }
+//
+//            }
+//
+//            override fun onSubscribe(d: Disposable) {
+//                disposable = d
+//                callback.addDisposable(d)
+//            }
+//
+//            override fun onNext(t: T) {
+//                callback.onSuccess?.invoke(t)
+//            }
+//
+//            override fun onError(e: Throwable) {
+//                callback.stopRequest()
+//                ToastUtils.showShort(e.message.toString())
+//            }
+//        }
+//        )
+//}
 
 
 class RequestCallBackByCoroutine<T : ProjectData<*>> {

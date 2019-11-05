@@ -8,36 +8,29 @@ import com.example.module_main.vm.SecondViewModel
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : BFActivity<SecondViewModel>() {
+    var index = 0
     override val layoutId: Int = R.layout.activity_second
-
     override fun initView(savedInstanceState: Bundle?) {
         viewModel.refreshLayout2 =refresh
-        viewModel.list?.observe(this, Observer {data->
-            refresh?.isRefreshState?.let {
-                if (it){
-                    viewModel.adapter.setNewData(data)
-                    refresh?.pageIndex=1
-                }else{
-                    viewModel.adapter.addData(data)
-                }
-            }
-        })
         viewModel.adapter.apply {bindToRecyclerView(recycle)}
-        commit.setOnClickListener {
-            viewModel.geta(2)
+        viewModel.list?.observe(this, Observer {data->
+            viewModel.adapter.addData(data)
+        })
+        refresh.setOnRefreshListener {
+            viewModel.adapter.data.clear()
+            index=0
+            getData(index)
         }
-        refresh.refreshLoadMore {
-            loadMore={
-                viewModel.geta(it)
-            }
-            refresh= {
-                viewModel.geta(1)
-            }
+
+        refresh.setOnLoadMoreListener {
+            getData(++index)
         }
-//        refresh.autoRefresh()
     }
 
     override val viewModel: SecondViewModel by lazy {
         ViewModelProviders.of(this).get(SecondViewModel::class.java)
+    }
+    fun getData(index:Int){
+viewModel.getData(index)
     }
 }

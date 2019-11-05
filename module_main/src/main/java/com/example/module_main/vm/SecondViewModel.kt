@@ -10,6 +10,7 @@ import com.example.projectcode.bean.PublicNumberDetail
 import com.example.projectcode.net.ProjectData
 import com.example.projectcode.net.ProjectViewModel
 import com.example.projectcode.net.request
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,8 +20,18 @@ import java.util.concurrent.TimeUnit
 
 class SecondViewModel : ProjectViewModel() {
     val adapter = SecondAdapter()
-    var refreshLayout2: RefreshLayout? = null
+    var refreshLayout2: SmartRefreshLayout? = null
     var list: MutableLiveData<List<DataX?>>? = MutableLiveData()
+
+    fun getData(pageindex: Int){
+        serviceByRxjava.getPublicNumberDetailListByRxjava(408,pageindex).request(compositeDisposable){
+            addRefreshLayout(refreshLayout2)
+            onSuccess={
+                list?.postValue(it?.data?.datas)
+                isHasMore = (it?.data?.datas?.size?:0 ==20)
+            }
+        }
+    }
     fun geta(pageindex: Int) {
 //        presenterScope.request<ProjectData<PublicNumberDetail>> {
 //            api = {
