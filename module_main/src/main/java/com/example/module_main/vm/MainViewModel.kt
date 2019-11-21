@@ -10,6 +10,7 @@ import com.example.projectcode.net.request
 class MainViewModel : ProjectViewModel() {
     var list: MutableLiveData<List<PublicNumberBean>>? = MutableLiveData()
     fun getdata() {
+        //这里是用协程形式调用
         presenterScope.request<ProjectData<List<PublicNumberBean>>> {
             api = { serviceByCoroutine.getPublicNumberList2() }
             onSuccess={
@@ -21,12 +22,12 @@ class MainViewModel : ProjectViewModel() {
                 Log.d("错误", error)
             }
         }
-        
-       serviceByRxjava.getPublicNumberList3().request(compositeDisposable!!){
-           onSuccess={
-               list?.postValue(it!!.data)
-           }
-       }
+        //这里是用rxjava形式调用
+//       serviceByRxjava.getPublicNumberList3().request(compositeDisposable!!){
+//           onSuccess={
+//               list?.postValue(it!!.data)
+//           }
+//       }
         
     }
 
